@@ -55,6 +55,14 @@ The controlled vocabulary for `tags:` frontmatter, per [[04 - Tagging]]. Add a t
 | `ai-assistant` | Notes about AI assistants/companions as a concept |
 | `agents` | Notes about AI coding agents specifically |
 
+## Personal / Career
+
+| Tag | Used for |
+|---|---|
+| `profile` | Personal profile/positioning notes |
+| `career` | Career-facing material (skills, resume framing) |
+| `skills` | Skill inventories and proficiency tracking |
+
 ---
 
 ## Legacy tags (pre-dating this taxonomy, not yet normalized)
