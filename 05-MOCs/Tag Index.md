@@ -74,6 +74,14 @@ The controlled vocabulary for `tags:` frontmatter, per [[04 - Tagging]]. Add a t
 | `ai-ml` | AI/LLM evaluation and AI/ML learning |
 | `systems-thinking` | Meta capabilities: approach, translation, leadership, positioning |
 
+## App Ideas (product concept tags)
+
+| Tag | Used for |
+|---|---|
+| `app-ideas` | Any note under the App Ideas folder |
+| `relay` | The Relay app concept specifically |
+| `operon` | The Operon app concept specifically |
+
 ---
 
 ## Legacy tags (pre-dating this taxonomy, not yet normalized)
