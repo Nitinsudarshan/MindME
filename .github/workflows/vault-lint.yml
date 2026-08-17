@@ -1,0 +1,39 @@
+name: Vault Lint
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Determine changed markdown files
+        id: changed
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            base="${{ github.event.pull_request.base.sha }}"
+          else
+            base="${{ github.event.before }}"
+          fi
+          if [ -z "${base:-}" ] || ! git cat-file -e "$base" 2>/dev/null; then
+            base=$(git rev-list --max-parents=0 HEAD | tail -1)
+          fi
+          git diff --name-only -z "$base" "${{ github.sha }}" -- '*.md' > changed.txt || true
+
+      - name: Lint changed vault notes
+        run: |
+          if [ -s changed.txt ]; then
+            xargs -0 -a changed.txt python3 scripts/lint_vault.py
+          else
+            echo "No markdown files changed — nothing to lint."
+          fi
