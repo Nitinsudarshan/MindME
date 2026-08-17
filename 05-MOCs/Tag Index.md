@@ -63,6 +63,17 @@ The controlled vocabulary for `tags:` frontmatter, per [[04 - Tagging]]. Add a t
 | `career` | Career-facing material (skills, resume framing) |
 | `skills` | Skill inventories and proficiency tracking |
 
+## Technical Domains (Profile cluster tags)
+
+| Tag | Used for |
+|---|---|
+| `product` | Product/systems design and requirements work |
+| `automation` | Workflow automation (n8n, Apps Script, integrations) |
+| `data` | Databases, SQL, Python, analytics/BI, spreadsheets |
+| `web` | Web application, version control, deployment, infra |
+| `ai-ml` | AI/LLM evaluation and AI/ML learning |
+| `systems-thinking` | Meta capabilities: approach, translation, leadership, positioning |
+
 ---
 
 ## Legacy tags (pre-dating this taxonomy, not yet normalized)
