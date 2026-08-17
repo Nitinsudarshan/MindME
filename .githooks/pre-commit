@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# Vault lint gate — see Rules/10 - Agent and AI Assistant Protocol.md.
+# Installed via: bash scripts/setup-hooks.sh
+set -euo pipefail
+cd "$(git rev-parse --show-toplevel)"
+
+mapfile -d '' -t files < <(git diff --cached --name-only -z --diff-filter=ACMR -- '*.md')
+
+if [ ${#files[@]} -eq 0 ]; then
+  exit 0
+fi
+
+python3 scripts/lint_vault.py "${files[@]}"
