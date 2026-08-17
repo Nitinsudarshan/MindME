@@ -1,0 +1,209 @@
+{
+  "main": {
+    "id": "c98cb9beb9fd7969",
+    "type": "split",
+    "children": [
+      {
+        "id": "381a86cb183f34b4",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "f511c9845a1c0623",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "Graph view"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "7516dabb8e2bc3ce",
+    "type": "split",
+    "children": [
+      {
+        "id": "1de96d5e4867abc8",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "45eeacb8c577883c",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "1e47182efa86d100",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "e08f8468a7ddcd52",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "301624dd21076732",
+    "type": "split",
+    "children": [
+      {
+        "id": "419ec2bf4fa0cd3b",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "c650bd7971fbb997",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks"
+            }
+          },
+          {
+            "id": "23e6caeafcdabd49",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links"
+            }
+          },
+          {
+            "id": "524d3c54526b0ef1",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "3c6d25df3e67faca",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "759a503ed27dee78",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Untitled 1.base",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "f511c9845a1c0623",
+  "lastOpenFiles": [
+    "Untitled.canvas",
+    "Mnemos/Mnemos — Dev Startup Steps - New.md",
+    "Second Brain/Second Brain - Broad Outline.md",
+    "Mnemos/Mnemos — Dev Startup Steps.md",
+    "Second Brain/Second Brain - PKM Tools Survey (Aug 2026).md",
+    "Mnemos/App Scope.md",
+    "Research-Framework/Git Repo Research Framework.md",
+    "Research-Framework/Second Brain - Repo Research Kickoff Prompt (Template).md",
+    "Research-Framework/Repo Research Kickoff Prompt (Template).md",
+    "Research-Framework",
+    "Untitled.base",
+    "Second Brain",
+    "Clippings/Code review for NGConnect repository.md",
+    "Welcome.md",
+    "Mnemos",
+    "Clippings/Code review for NGConnect repository 1.md",
+    "Clippings",
+    "Untitled 1.base",
+    "2026-08-12.md",
+    "Untitled 1.md",
+    "Untitled 1.canvas"
+  ]
+}
