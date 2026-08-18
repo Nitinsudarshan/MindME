@@ -26,7 +26,8 @@ flowchart TD
     B --> B4[Licensing and Maturity]
     B --> B5[Recommendation]
     A --> C["Logseq/, AFFiNE/, Anytype/"]
-    C --> D[PKM Editors - Comparison]
+    A --> E["Comparison/"]
+    E --> D[PKM Editors - Comparison]
 ```
 
 ## Tools researched

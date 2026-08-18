@@ -34,7 +34,7 @@ I want a comparison across these tools, all solving the same problem: **{tool A}
 
 - Check `Tools/Tools.md` first. For any tool already researched there, reuse and link to its existing Brief note rather than re-researching it. For any tool not yet covered, research it fresh — following [[Tools Folder Research Kickoff Prompt (Template)]]'s methodology — and give it its own `Tools/<Tool Name>/` folder before comparing.
 - Build the comparison itself using the Comparison Matrix approach in `Research-Framework/Git Repo Research Framework.md` (section 5) — one matrix, one row per tool, across whichever dimensions actually matter for this decision, not a fixed generic list.
-- File the result as a new note directly under `Tools/` (a sibling to the tool folders, not nested inside any one of them), named for the comparison topic — e.g. `Tools/{Category} Comparison.md`. Use `type: moc`, since it links out to each tool's own Brief note rather than standing alone.
+- File the result under `Tools/Comparison/`, named for the comparison topic — e.g. `Tools/Comparison/{Category} Comparison.md`. This keeps every cross-tool comparison in one place, distinct from the individual tool folders. Use `type: moc`, since it links out to each tool's own Brief note rather than standing alone.
 - Read `Rules/00 - Rules Index.md` first and apply the relevant rule notes — frontmatter, tagging, linking, note structure, Mermaid diagram standards — same as any other note.
 - End with a clear verdict: which tool wins for the stated use case, and why — not a table left for the reader to interpret alone.
 - Add the new comparison note to the index in `Tools/Tools.md`.
