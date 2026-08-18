@@ -19,7 +19,13 @@ ROOT = Path(__file__).resolve().parent.parent
 
 # Folders whose .md files intentionally don't follow the frontmatter schema —
 # see "Rules/03 - Frontmatter and Metadata.md" section 5.
-EXEMPT_PREFIXES = ("Clippings/", "06-Templates/", ".obsidian/")
+EXEMPT_PREFIXES = (
+    "Clippings/",
+    "06-Templates/",
+    ".obsidian/",
+    "Active Projects/.agents/",
+    "Active Projects/Rules/",
+)
 
 # Repo-meta files, not vault notes — no frontmatter schema applies to these.
 EXEMPT_FILES = {"CLAUDE.md", "AGENTS.md", "README.md"}
