@@ -25,9 +25,11 @@ flowchart TD
     A --> B["Starter Template/"]
     A --> C[".agents/"]
     A --> D["Rules/"]
+    A --> E["PDDB Prompt Template"]
     B --> B1[Next.js + Shadcn boilerplate repo]
     C --> C1[graphify workflow + rules]
     D --> D1[21 NGConnect coding-convention files]
+    E --> E1[App Ideas note -> IDE-ready build prompt]
 ```
 
 ## Contents
@@ -37,6 +39,7 @@ flowchart TD
 | [[Starter Template]] | Next.js + Shadcn UI boilerplate — the default new-project starting point | [github.com/Nitinsudarshan/boilerplate](https://github.com/Nitinsudarshan/boilerplate.git) |
 | `.agents/` | Claude Code agent workflow/rule config (the `graphify` codebase-knowledge-graph workflow, plus its always-on rule and a version/changelog rule) | Copied verbatim from [NGConnect's `.agents/`](https://github.com/Nitinsudarshan/NGConnect/tree/main/.agents) |
 | `Rules/` | 21 coding-convention files (code standards, component architecture, data access, security, RBAC, forms/validation, testing, API conventions, performance, accessibility, design system, and more) | Copied verbatim from [NGConnect's `rules/`](https://github.com/Nitinsudarshan/NGConnect/tree/main/rules) |
+| [[PDDB Prompt Template]] | Meta-prompt framework that turns a researched [[App Ideas]] concept into a single IDE-ready build prompt | Original to this vault |
 
 `.agents/` and `Rules/` are exempt from this vault's frontmatter schema (see [[03 - Frontmatter and Metadata]]) — they're operational configuration copied verbatim to be reused as-is in a future project, not vault-native knowledge notes.
 
