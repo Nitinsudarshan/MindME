@@ -29,6 +29,24 @@ PDDB (**P**lan → **D**ocument → **D**ecide → **B**uild) is a meta-prompt f
 
 The whole point is closing the gap between "I did the research" and "the IDE is building the right thing" without a manual re-explaining step in between — the same capture-to-action instinct behind [[Relay - Brief|Relay]] itself, applied to my own build workflow.
 
+## File manifest — what exists for `<AppName>` at each stage
+
+| Stage | Trigger | Files created |
+|---|---|---|
+| 0. Research (not part of this framework — manual, or via [[Git Repo Research Framework]]) | You research the idea | `<AppName> - Brief.md`, `- Competitive Research.md`, `- Implementation Options.md`, `- Technology Stacks.md`, `- MVP and Recommendation.md` |
+| 1. [[Decision Loop]] | First PDDB invocation, only if `<AppName> - Decision Log.md` doesn't exist yet | `<AppName> - Decision Log.md` — created once, then **amended** (not recreated) whenever a new clarification surfaces later, the same way [[Relay - Decision Log]]'s Decision 12 was added after the fact |
+| 2. PDDB generation (§3 steps 2–7) | Every PDDB invocation | `<AppName> - IDE Build Prompt.md` — regenerated/overwritten whenever the decision log or research changes materially, never a second source of truth alongside it |
+| 3. Agent/rule config seeding (§3 step 8) | Once, when the build prompt is settled and it's time to actually start building | `<AppName>/AGENTS.md`, `<AppName>/Rules/*.md` (however many apply after the keep/adapt/rescope/drop pass in step 8), `<AppName>/.agents/**` |
+
+Stages 1–3 also **edit** two existing files rather than creating new ones —
+`App Ideas/App Ideas.md`'s diagram/table gets a node added for each new
+artifact, and `<AppName> - Brief.md`'s "Related notes" section gets a link
+added for each one. This is what keeps the graph from accumulating orphan
+notes as the framework runs (see [[05 - Linking and Graph Discipline]]).
+Rerunning any stage never touches stage 0's research notes — everything
+downstream is a derived artifact, regenerated from them, not a parallel
+source of truth.
+
 ## 2. How to invoke this framework
 
 Say (or write in a request):
