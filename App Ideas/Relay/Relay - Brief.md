@@ -59,6 +59,7 @@ The closest direct competitor found in research is **OpenWhispr** (dictation + m
 - [[Relay - Technology Stacks]] — 3 candidate stacks
 - [[Relay - MVP and Recommendation]] — MVP scope, cost matrix, USPs, final recommendation
 - [[Relay - Decision Log]] — confirmed decisions, including build-environment calls the research alone couldn't answer
+- [[Relay - IDE Build Prompt]] — the generated, paste-ready prompt for Google Antigravity
 
 ## Related
 

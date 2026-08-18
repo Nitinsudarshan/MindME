@@ -27,6 +27,7 @@ flowchart TD
     R --> R4[Relay - Technology Stacks]
     R --> R5[Relay - MVP and Recommendation]
     R --> R6[Relay - Decision Log]
+    R --> R7[Relay - IDE Build Prompt]
     O --> O1[Operon - Brief]
     O --> O2[Operon - Competitive Research]
     O --> O3[Operon - Implementation Options]
