@@ -60,6 +60,7 @@ The closest direct competitor found in research is **OpenWhispr** (dictation + m
 - [[Relay - MVP and Recommendation]] — MVP scope, cost matrix, USPs, final recommendation
 - [[Relay - Decision Log]] — confirmed decisions, including build-environment calls the research alone couldn't answer
 - [[Relay - IDE Build Prompt]] — the generated, paste-ready prompt for Google Antigravity
+- `AGENTS.md`, `Rules/`, `.agents/` (in this folder) — Relay's own coding-convention set, adapted from `Active Projects/.agents`, `Active Projects/Rules`, and NGConnect's AGENTS.md for Relay's Rust/Tauri + Next.js/Supabase architecture; exempt from this vault's frontmatter schema per [[03 - Frontmatter and Metadata]] §5
 
 ## Related
 
