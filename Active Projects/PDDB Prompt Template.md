@@ -6,7 +6,7 @@ type: resource
 status: growing
 created: 2026-08-18
 updated: 2026-08-18
-related: ["[[App Ideas]]", "[[Active Projects]]", "[[Starter Template]]", "[[Git Repo Research Framework]]"]
+related: ["[[App Ideas]]", "[[Active Projects]]", "[[Starter Template]]", "[[Git Repo Research Framework]]", "[[Decision Loop]]"]
 source: 
 ---
 
@@ -39,12 +39,15 @@ Say (or write in a request):
 
 ## 3. Generation procedure (what happens when this is invoked)
 
-1. **Read every note** under `App Ideas/<AppName>/` — typically `<AppName> - Brief`, `- Competitive Research`, `- Implementation Options`, `- Technology Stacks`, `- MVP and Recommendation`, but read whatever actually exists rather than assuming that exact set.
-2. **Extract fields** per the mapping table in §4. If a field has no source (a note is missing or a section wasn't written), infer the most reasonable value from what *is* there and record the gap as an open item in the generated Decision Log seed — do not block generation on a missing note.
-3. **Run the stack-reuse check** in §6 against [[Starter Template]] and `Active Projects/.agents` / `Active Projects/Rules`.
-4. **Fill the template in §5** with the extracted fields.
-5. **Return the filled template as a single fenced prompt block** — that block is the deliverable, ready to paste into an AI coding IDE session pointed at a (possibly empty) repo for `<AppName>`.
-6. Do **not** ask me clarifying questions during generation unless the source notes are genuinely silent on something that changes MVP scope or architecture (mirrors §7 below) — if the research already made the call, use it.
+1. **Run the [[Decision Loop]] gate first.** Check whether `App Ideas/<AppName>/<AppName> - Decision Log.md` exists.
+   - If it doesn't, stop here and hand off to [[Decision Loop]]'s interview procedure instead of continuing to step 2 — it will read the research, ask whatever it can't derive (one question at a time), assemble the decision log, commit it, and only then return control here.
+   - If it does, continue to step 2 with that file already in hand.
+2. **Read every note** under `App Ideas/<AppName>/` — typically `<AppName> - Brief`, `- Competitive Research`, `- Implementation Options`, `- Technology Stacks`, `- MVP and Recommendation`, `- Decision Log`, but read whatever actually exists rather than assuming that exact set.
+3. **Extract fields** per the mapping table in §4. If a field has no source (a note is missing or a section wasn't written), infer the most reasonable value from what *is* there and record the gap as an open item in the generated Decision Log seed — do not block generation on a missing note.
+4. **Run the stack-reuse check** in §6 against [[Starter Template]] and `Active Projects/.agents` / `Active Projects/Rules`.
+5. **Fill the template in §5** with the extracted fields, sourcing §5.9's Decision Log directly from `<AppName> - Decision Log.md` rather than re-deriving it from the other research notes.
+6. **Return the filled template as a single fenced prompt block** — that block is the deliverable, ready to paste into an AI coding IDE session pointed at a (possibly empty) repo for `<AppName>`.
+7. Do **not** ask me clarifying questions during generation unless the source notes are genuinely silent on something that changes MVP scope or architecture (mirrors §7 below) — if the research or the decision log already made the call, use it. [[Decision Loop]] is where the "only I can answer this" questions get asked, once, up front — not here.
 
 ## 4. Field mapping — App Ideas notes → prompt placeholders
 
@@ -63,8 +66,8 @@ Say (or write in a request):
 | `{{COMPETITIVE_DIFFERENTIATION}}` | `- MVP and Recommendation`, "USPs" / "Competitive differentiation"; `- Competitive Research` | |
 | `{{TECHNICAL_RISKS}}` / `{{PRODUCT_RISKS}}` | `- MVP and Recommendation`, "Biggest technical/product risks" | Feed directly into what gets tested first |
 | `{{FIRST_MILESTONES}}` | `- MVP and Recommendation`, "First N development milestones" | Becomes the vertical-slice build order (§7 of the reference operating mode) |
-| `{{DECISION_LOG_SEED}}` | Every place a note says "recommended X over Y" or "explicitly deferred" | Pre-fills the Decision Log so the IDE agent doesn't relitigate calls already made — see the template format in §5.9 |
-| `{{OPEN_QUESTIONS}}` | Anything the research flagged as unresolved, plus any gap found during step 2 of §3 | These are the *only* things the generated prompt should tell the IDE to actually stop and ask about |
+| `{{DECISION_LOG_SEED}}` | `<AppName> - Decision Log.md`, produced by [[Decision Loop]] before this step ever runs | Every decision is already final — none of these should be reopened by the IDE agent |
+| `{{OPEN_QUESTIONS}}` | Anything the research flagged as unresolved that [[Decision Loop]] didn't already turn into a decision, plus any gap found during step 3 of §3 | These are the *only* things the generated prompt should tell the IDE to actually stop and ask about |
 
 ## 5. The IDE-ready prompt template
 
@@ -169,7 +172,7 @@ moving on. Use this order unless inspection reveals a better one:
 Do not introduce a new framework, database, state layer, ORM, UI library, or
 service without documenting why in `decisions.md` first.
 
-## 9. Decision Log — seeded from prior research
+## 9. Decision Log — seeded from the confirmed decision log
 
 Record every material decision in `docs/decisions.md` in this format:
 
@@ -182,8 +185,9 @@ Alternatives considered:
 Impact:
 ```
 
-Pre-seed it with these decisions, already made during research — do not
-relitigate them without a real new reason:
+Pre-seed it with these decisions, taken from {{APP_NAME}} - Decision Log.md —
+every one of these has already been through the [[Decision Loop]] process, so
+do not relitigate them without a real new reason:
 
 {{DECISION_LOG_SEED}}
 
@@ -270,4 +274,5 @@ The part worth protecting here isn't the operating-mode text itself — that's t
 - [[Active Projects]]
 - [[Starter Template]]
 - [[Git Repo Research Framework]]
+- [[Decision Loop]]
 - [[Relay - Brief]]
