@@ -82,6 +82,12 @@ The controlled vocabulary for `tags:` frontmatter, per [[04 - Tagging]]. Add a t
 | `relay` | The Relay app concept specifically |
 | `operon` | The Operon app concept specifically |
 
+## Active Projects
+
+| Tag | Used for |
+|---|---|
+| `active-projects` | Any note under the Active Projects folder |
+
 ---
 
 ## Legacy tags (pre-dating this taxonomy, not yet normalized)
