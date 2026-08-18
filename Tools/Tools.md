@@ -25,6 +25,8 @@ flowchart TD
     B --> B3[Comparison]
     B --> B4[Licensing and Maturity]
     B --> B5[Recommendation]
+    A --> C["Logseq/, AFFiNE/, Anytype/"]
+    C --> D[PKM Editors - Comparison]
 ```
 
 ## Tools researched
@@ -32,6 +34,15 @@ flowchart TD
 | Tool | What it is | Verdict |
 |---|---|---|
 | [[Hyvor Relay - Brief\|Hyvor Relay]] | Self-hosted, open-source transactional email API (SES/Mailgun/SendGrid alternative) | Pilot-worthy above ~50k emails/month with ops capacity; not worth it below that |
+| [[Logseq - Brief\|Logseq]] | Block-outliner PKM tool, mid-transition to a SQLite-backed DB version | Evaluate further — file version only |
+| [[AFFiNE - Brief\|AFFiNE]] | Unified doc-editor + whiteboard, open-core | Evaluate further — EE-gated backend |
+| [[Anytype - Brief\|Anytype]] | "Everything is an object" PKM tool with real MCP support | Reject — proprietary object format |
+
+## Cross-tool comparisons
+
+| Comparison | Tools covered | Verdict |
+|---|---|---|
+| [[PKM Editors - Comparison]] | Logseq, AFFiNE, Anytype | No tool wins on both portability and AI/MCP readiness; Logseq (file version) ranks first for a portability-first vault |
 
 ## Related
 
