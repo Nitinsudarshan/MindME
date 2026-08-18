@@ -5,8 +5,8 @@ tags: [rules, metadata, frontmatter]
 type: resource
 status: evergreen
 created: 2026-08-17
-updated: 2026-08-17
-related: ["[[00 - Rules Index]]", "[[04 - Tagging]]", "[[06 - Note Structure and Templates]]"]
+updated: 2026-08-18
+related: ["[[00 - Rules Index]]", "[[04 - Tagging]]", "[[06 - Note Structure and Templates]]", "[[PDDB Prompt Template]]"]
 source: 
 ---
 
@@ -78,7 +78,9 @@ source:
 
 Notes produced by the web-clipper plugin (`Clippings/`) keep the clipper's own frontmatter shape (`title, source, author, published, created, description, tags`) rather than this schema — that format is generated automatically and isn't worth fighting. `06-Templates/` is also exempt, since template files intentionally contain placeholder syntax instead of valid values.
 
-A third case: folders holding **operational configuration copied verbatim from another repository**, meant to be reused as-is rather than read as vault knowledge — e.g. `Active Projects/.agents/` and `Active Projects/Rules/` (copied from an external project's agent/rule config). These stay in the source project's own format; rewriting them into this vault's schema would break their ability to be dropped back into a real codebase unchanged. A note *describing* such a copied folder (see `Active Projects/Starter Template/Starter Template.md` for the pattern) still follows the full schema — the exemption covers the copied source files themselves, not notes written about them.
+A third case: folders holding **operational configuration copied or adapted from another repository**, meant to be reused as-is rather than read as vault knowledge — e.g. `Active Projects/.agents/` and `Active Projects/Rules/` (copied from an external project's agent/rule config). These stay in the source project's own format; rewriting them into this vault's schema would break their ability to be dropped back into a real codebase unchanged. A note *describing* such a copied folder (see `Active Projects/Starter Template/Starter Template.md` for the pattern) still follows the full schema — the exemption covers the copied source files themselves, not notes written about them.
+
+The same exemption extends, pattern-matched rather than hardcoded, to any `App Ideas/<AppName>/.agents/`, `App Ideas/<AppName>/Rules/`, and `App Ideas/<AppName>/AGENTS.md` — the per-app agent/rule config [[PDDB Prompt Template]] seeds once a build is ready to start, adapted from `Active Projects/.agents` / `Active Projects/Rules` for that app's actual stack. Same rationale: these are meant to be dropped into the app's real repo unchanged, not read as vault-native notes.
 
 All exempted folders are excluded from the automated lint described in [[10 - Agent and AI Assistant Protocol]] — see `scripts/lint_vault.py`'s `EXEMPT_PREFIXES` for the exact list.
 

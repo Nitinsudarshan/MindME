@@ -27,6 +27,15 @@ EXEMPT_PREFIXES = (
     "Active Projects/Rules/",
 )
 
+# Same exemption, but pattern-based for the per-app .agents/Rules/AGENTS.md
+# sets PDDB Prompt Template seeds under App Ideas/<AppName>/ — one entry
+# covers every current and future app, not just a hardcoded name.
+EXEMPT_PATTERNS = (
+    re.compile(r"^App Ideas/[^/]+/\.agents/"),
+    re.compile(r"^App Ideas/[^/]+/Rules/"),
+    re.compile(r"^App Ideas/[^/]+/AGENTS\.md$"),
+)
+
 # Repo-meta files, not vault notes — no frontmatter schema applies to these.
 EXEMPT_FILES = {"CLAUDE.md", "AGENTS.md", "README.md"}
 
@@ -89,7 +98,11 @@ def lint_file(path):
     errors = []
     rel = path.relative_to(ROOT).as_posix()
 
-    if rel in EXEMPT_FILES or any(rel.startswith(p) for p in EXEMPT_PREFIXES):
+    if (
+        rel in EXEMPT_FILES
+        or any(rel.startswith(p) for p in EXEMPT_PREFIXES)
+        or any(p.match(rel) for p in EXEMPT_PATTERNS)
+    ):
         return errors
 
     stem = path.stem

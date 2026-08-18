@@ -29,6 +29,24 @@ PDDB (**P**lan → **D**ocument → **D**ecide → **B**uild) is a meta-prompt f
 
 The whole point is closing the gap between "I did the research" and "the IDE is building the right thing" without a manual re-explaining step in between — the same capture-to-action instinct behind [[Relay - Brief|Relay]] itself, applied to my own build workflow.
 
+## File manifest — what exists for `<AppName>` at each stage
+
+| Stage | Trigger | Files created |
+|---|---|---|
+| 0. Research (not part of this framework — manual, or via [[Git Repo Research Framework]]) | You research the idea | `<AppName> - Brief.md`, `- Competitive Research.md`, `- Implementation Options.md`, `- Technology Stacks.md`, `- MVP and Recommendation.md` |
+| 1. [[Decision Loop]] | First PDDB invocation, only if `<AppName> - Decision Log.md` doesn't exist yet | `<AppName> - Decision Log.md` — created once, then **amended** (not recreated) whenever a new clarification surfaces later, the same way [[Relay - Decision Log]]'s Decision 12 was added after the fact |
+| 2. PDDB generation (§3 steps 2–7) | Every PDDB invocation | `<AppName> - IDE Build Prompt.md` — regenerated/overwritten whenever the decision log or research changes materially, never a second source of truth alongside it |
+| 3. Agent/rule config seeding (§3 step 8) | Once, when the build prompt is settled and it's time to actually start building | `<AppName>/AGENTS.md`, `<AppName>/Rules/*.md` (however many apply after the keep/adapt/rescope/drop pass in step 8), `<AppName>/.agents/**` |
+
+Stages 1–3 also **edit** two existing files rather than creating new ones —
+`App Ideas/App Ideas.md`'s diagram/table gets a node added for each new
+artifact, and `<AppName> - Brief.md`'s "Related notes" section gets a link
+added for each one. This is what keeps the graph from accumulating orphan
+notes as the framework runs (see [[05 - Linking and Graph Discipline]]).
+Rerunning any stage never touches stage 0's research notes — everything
+downstream is a derived artifact, regenerated from them, not a parallel
+source of truth.
+
 ## 2. How to invoke this framework
 
 Say (or write in a request):
@@ -48,6 +66,13 @@ Say (or write in a request):
 5. **Fill the template in §5** with the extracted fields, sourcing §5.9's Decision Log directly from `<AppName> - Decision Log.md` rather than re-deriving it from the other research notes.
 6. **Return the filled template as a single fenced prompt block, and persist it** to `App Ideas/<AppName>/<AppName> - IDE Build Prompt.md` (full vault frontmatter, linked from and to the app's other notes) — commit and push it like any other note. The chat block is for immediate use; the file is the durable record, so a later session (or a different IDE entirely) doesn't need this conversation to pick it back up. Regenerate and overwrite this file whenever the decision log or research changes materially — it's a derived artifact, not a second source of truth.
 7. Do **not** ask me clarifying questions during generation unless the source notes are genuinely silent on something that changes MVP scope or architecture (mirrors §7 below) — if the research or the decision log already made the call, use it. [[Decision Loop]] is where the "only I can answer this" questions get asked, once, up front — not here.
+8. **Seed the app's own agent/rule config as the last step**, once the build prompt itself is settled: adapt `Active Projects/.agents/`, `Active Projects/Rules/`, and [NGConnect's AGENTS.md](https://github.com/Nitinsudarshan/NGConnect/blob/main/AGENTS.md) into `App Ideas/<AppName>/.agents/`, `App Ideas/<AppName>/Rules/`, and `App Ideas/<AppName>/AGENTS.md`. This is not a copy — it's a real adaptation pass:
+   - Read the confirmed stack in `<AppName> - Decision Log.md` (and the generated build prompt's §8) first. NGConnect's rule set assumes a single Next.js + Supabase app; most apps generated here won't match that shape exactly.
+   - For each NGConnect rule file, decide: **keep as-is** (genuinely stack-agnostic, e.g. accessibility, documentation format), **adapt** (same principle, different specifics — e.g. `data-access.md` splitting into local-storage vs. cloud-storage sections if the app has both), **rescope** (still valid, but only for one surface of a multi-surface app — e.g. `server-client-boundary.md` only applies where there's an actual Next.js App Router), or **drop** (no analog in this app's feature set at all — e.g. `data-import.md` if there's no file-import feature; `greetings.md`-style bespoke NGConnect component docs never apply). Say explicitly which files were dropped and why, in `AGENTS.md`'s own rule index — don't silently omit them.
+   - Add net-new rule files for any part of the stack NGConnect's rule set never covered at all (e.g. a Rust backend, a mobile shell, a CLI) — write one the same way the existing files are written: `trigger`/`description`/`globs` frontmatter, a short rationale, concrete rules, not abstract principles.
+   - `global.md` (or `AGENTS.md`'s own index) must state which files apply to which surface when the app has more than one (native/web/CLI/etc.) — a rule file that silently assumes a single surface will get misapplied.
+   - These new folders and the new `AGENTS.md` are **exempt from this vault's frontmatter schema**, the same as `Active Projects/.agents/` and `Active Projects/Rules/` — see [[03 - Frontmatter and Metadata]] §5 and `scripts/lint_vault.py`'s `EXEMPT_PATTERNS`. They're operational config meant to be dropped into the app's real repo unchanged, not vault-native notes.
+   - Link the new set from the app's Brief (a short mention in its "Related notes" section is enough — these aren't wikilink-style vault notes, so a plain reference is fine, matching how [[Active Projects]] itself references its own `.agents/`/`Rules/`).
 
 ## 4. Field mapping — App Ideas notes → prompt placeholders
 
