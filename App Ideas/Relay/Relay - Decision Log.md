@@ -14,7 +14,7 @@ source:
 
 ## Summary
 
-The confirmed decision record for Relay, produced by [[Decision Loop]]'s interview on 2026-08-18 since no such log existed yet. It carries forward every decision [[Relay - MVP and Recommendation]] and [[Relay - Technology Stacks]] already settled through research, and adds the decisions only the builder could make — build environment, repo relationship, and a few scope changes that came out of the interview itself. [[PDDB Prompt Template]] reads this file directly rather than re-deriving decisions from research on every future run.
+The confirmed decision record for Relay, produced by [[Decision Loop]]'s interview on 2026-08-18 since no such log existed yet, and extended the same day with a follow-up clarification on hybrid-mode architecture. It carries forward every decision [[Relay - MVP and Recommendation]] and [[Relay - Technology Stacks]] already settled through research, and adds the decisions only the builder could make — build environment, repo relationship, hybrid-mode auth model, and a few scope changes that came out of the interview itself. [[PDDB Prompt Template]] reads this file directly rather than re-deriving decisions from research on every future run.
 
 ---
 
@@ -113,9 +113,20 @@ Reason: Stated directly during the interview.
 Alternatives considered: None — a direct answer to a fixed build-environment question.
 Impact: Generated prompts should stay IDE-agnostic in their instructions where possible, but should name Google Antigravity as the actual execution environment for context.
 
+**12. Hybrid-mode architecture: cloud storage + real auth, not remote access to the Windows machine** — *new, refines Decision 3*
+Context: Decision 3 established that hybrid/cloud mode needs a web surface, but left open exactly how the web client would reach the data — a first pass wrongly framed this as a network-exposure question (LAN-only vs. tunnel vs. public-facing access *into the Windows machine*).
+Decision made: In hybrid/cloud mode, the Windows native app stays the primary place where capture and local processing happen, but persisted data (vault entries, Kanban items, structured outputs) is stored in a cloud backend rather than only local files. Both the web client and the Windows app authenticate against this cloud backend with a real login — password/token-based auth, not LAN-only or tunnel-based access.
+Reason: Explicit clarification from the builder — hybrid mode's "cloud" component is about *where data lives and how it's authenticated*, not about remotely reaching into the Windows machine itself.
+Alternatives considered: LAN-only web access to a locally-hosted backend — rejected, doesn't match the actual intent. Tunneling into the local machine (Tailscale/ngrok-style) — rejected for the same reason.
+Impact: A backend-as-a-service with built-in auth and storage (Supabase was already flagged as the auth candidate for cloud sync in [[Relay - Technology Stacks]]'s original Stack B, and stays the natural fit here) is now a confirmed part of the hybrid tier, not just a "later, if needed" note. Local-only mode still needs no auth at all — this only applies once hybrid/cloud mode is enabled. Watch Supabase's free-tier auto-pause-after-idle-week behavior (already flagged as a cost-path risk in [[Relay - Competitive Research]]) as a technical risk to design around, per the zero-budget constraint in Decision 4.
+
 ## My Take
 
 The most useful thing this interview surfaced wasn't any single answer — it's that Decision 2 was made in direct, acknowledged tension with Decision 6's own capability data (n8n is the advanced, production-proven skill; Rust isn't a listed skill at all). Recording that tension explicitly, rather than quietly picking whichever stack "sounds more legitimate," is exactly what a decision log is supposed to make visible for a future re-read.
+
+## Noted for later, not decided
+
+Team/enterprise use, with mutual sharing between users, came up as a direction worth exploring — this maps to the "shared/team vault features" line already sitting in [[Relay - MVP and Recommendation]]'s Experimental tier. Not a decision yet, just recorded so it isn't lost: Decision 12's real-auth foundation for hybrid mode is a reasonable base to extend into multi-user sharing later, precisely because accounts already exist once that's built.
 
 ## Related
 
