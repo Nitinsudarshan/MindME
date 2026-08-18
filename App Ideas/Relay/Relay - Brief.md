@@ -5,7 +5,7 @@ tags: [app-ideas, relay, product]
 type: moc
 status: growing
 created: 2026-08-17
-updated: 2026-08-17
+updated: 2026-08-18
 related: ["[[App Scope]]", "[[App Ideas]]", "[[AI and LLM Technology]]"]
 source: 
 ---
@@ -58,6 +58,7 @@ The closest direct competitor found in research is **OpenWhispr** (dictation + m
 - [[Relay - Implementation Options]] — 3 cheap build paths
 - [[Relay - Technology Stacks]] — 3 candidate stacks
 - [[Relay - MVP and Recommendation]] — MVP scope, cost matrix, USPs, final recommendation
+- [[Relay - Decision Log]] — confirmed decisions, including build-environment calls the research alone couldn't answer
 
 ## Related
 

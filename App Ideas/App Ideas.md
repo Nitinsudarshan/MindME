@@ -5,7 +5,7 @@ tags: [app-ideas, product]
 type: moc
 status: growing
 created: 2026-08-17
-updated: 2026-08-17
+updated: 2026-08-18
 related: ["[[Technical Skills & Technology Stack]]", "[[Git Repo Research Framework]]"]
 source: 
 ---
@@ -26,6 +26,7 @@ flowchart TD
     R --> R3[Relay - Implementation Options]
     R --> R4[Relay - Technology Stacks]
     R --> R5[Relay - MVP and Recommendation]
+    R --> R6[Relay - Decision Log]
     O --> O1[Operon - Brief]
     O --> O2[Operon - Competitive Research]
     O --> O3[Operon - Implementation Options]
