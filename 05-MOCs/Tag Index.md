@@ -88,6 +88,12 @@ The controlled vocabulary for `tags:` frontmatter, per [[04 - Tagging]]. Add a t
 |---|---|
 | `active-projects` | Any note under the Active Projects folder |
 
+## Tools
+
+| Tag | Used for |
+|---|---|
+| `tools` | Any note under the Tools folder (single-tool deep-dive research) |
+
 ---
 
 ## Legacy tags (pre-dating this taxonomy, not yet normalized)
